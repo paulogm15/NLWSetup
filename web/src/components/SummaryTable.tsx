@@ -9,7 +9,7 @@ const summaryDates = generateDatesFromYearBeginning()
 const mininumSummaryDatesSize = 18 * 7 // 18 weeks
 const amountOfDaysToFill = mininumSummaryDatesSize - summaryDates.length
 
-export function SummaryTable() {
+export const SummaryTable = () => {
     return (
         <div className='w-full flex'>
             <div className='grid grid-rows-7 grid-flow-row gap-3'>
@@ -27,7 +27,13 @@ export function SummaryTable() {
 
             <div className='grid grid-rows-7 grid-flow-col gap-3'>
                 {summaryDates.map(date => {
-                    return <HabitDay key={date.toString()} />
+                    return (
+                        <HabitDay
+                            key={date.toString()}
+                            amount={5}
+                            completed={Math.round(Math.random() * 5)}
+                        />
+                    )
                 })}
 
                 {amountOfDaysToFill > 0 && Array.from({ length: amountOfDaysToFill }).map((_, i) => {
